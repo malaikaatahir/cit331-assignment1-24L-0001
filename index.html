@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bebaak Club | Women's Empowerment Society</title>
+  <meta name="description" content="BeBaak is a university women's empowerment club with workshops, talks and community events.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to main content</a>
+
+  <header class="site-header">
+    <nav aria-label="Main navigation">
+      <a class="brand" href="index.html">BeBaak</a>
+      <ul>
+        <li><a class="active" href="index.html" aria-current="page">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="register.html">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="content">
+    <section class="hero" aria-label="Welcome">
+      <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="images/hero-poster.jpg" aria-label="Animated pop-art illustration of a woman in a red saree lowering her sunglasses with confidence">
+        <source src="images/hero.mp4" type="video/mp4">
+        <p>Your browser cannot play this video. A pop-art illustration of a confident woman in sunglasses is shown instead.</p>
+      </video>
+
+      <section class="video-controls" aria-label="Video controls">
+        <button type="button" id="playBtn" aria-pressed="false">Pause</button>
+        <button type="button" id="soundBtn" aria-pressed="false">Sound on</button>
+      </section>
+
+      <section class="hero-card">
+        <h1 class="club-name">BeBaak Club</h1>
+        <p>A women's empowerment club for students who want to speak up, learn new skills and lift each other higher. Everyone is welcome.</p>
+        <p class="button-row">
+          <a class="btn" href="events.html">See our events</a>
+          <a class="btn secondary" href="register.html">Join an event</a>
+        </p>
+      </section>
+    </section>
+
+    <section aria-labelledby="featured-title">
+      <h2 id="featured-title">Featured upcoming event</h2>
+      <section class="event-list">
+        <article class="event-card featured-card">
+          <time class="burst" datetime="2026-11-07T17:00">
+            <span class="day">07</span>
+            <span class="month">Nov 2026</span>
+          </time>
+          <section class="featured-body">
+            <h3>Voices Unmuted: Open Mic and Poetry Night</h3>
+            <p class="event-date">Saturday, 5:00 PM</p>
+            <p class="event-place">Main Auditorium</p>
+            <p>Read a poem, share a story or simply listen. This is a safe, supportive stage for every voice on campus.</p>
+            <a class="btn" href="register.html">Save my seat</a>
+          </section>
+        </article>
+      </section>
+    </section>
+
+    <section class="about" aria-labelledby="about-title">
+      <figure>
+        <img src="images/portrait.jpg" width="520" height="544" alt="Pop-art illustration of a confident woman in a red saree, gold jewellery and dark sunglasses">
+        <figcaption>Our muse: calm, bold and unapologetic.</figcaption>
+      </figure>
+      <section class="about-text">
+        <h2 id="about-title">Who we are</h2>
+        <p>BeBaak means the light of women. We are a student-led club that turns confidence into action through events, mentoring and creative projects.</p>
+        <h3>What we do</h3>
+        <ul class="pillars">
+          <li>Host talks and panels with women leaders from many careers.</li>
+          <li>Run skill workshops in technology, public speaking and finance.</li>
+          <li>Celebrate South Asian art, craft and culture.</li>
+          <li>Build a supportive network that lasts beyond graduation.</li>
+        </ul>
+      </section>
+    </section>
+
+    <aside aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact the committee</h2>
+      <p>Questions, ideas or want to volunteer? Email <a href="mailto:bebaak@university.edu.pk">bebaak@university.edu.pk</a> or visit the Student Affairs office.</p>
+      <p>Learn more about gender equality at <a href="https://www.unwomen.org/" target="_blank" rel="noopener noreferrer">UN Women</a>.</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 BeBaak Women's Empowerment Club</p>
+    <p>Built for CIT331 Web Technologies, Assignment 1.</p>
+  </footer>
+
+  <script src="js/hero.js"></script>
+</body>
+</html>
