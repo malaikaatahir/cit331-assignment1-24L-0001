@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register | BeBaak Club</title>
+  <meta name="description" content="Register for a BeBaak Club event and see everyone saved on this device.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to main content</a>
+
+  <header class="site-header">
+    <nav aria-label="Main navigation">
+      <a class="brand" href="index.html">BeBaak</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a class="active" href="register.html" aria-current="page">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="content">
+    <section class="page-intro" aria-labelledby="page-title">
+      <h1 id="page-title">Join us</h1>
+      <p>Choose an event and tell us a little about yourself. Fields marked with an asterisk (*) are required.</p>
+    </section>
+
+    <section aria-labelledby="form-title">
+      <h2 id="form-title">Register for an event</h2>
+      <form id="regForm" action="#" method="post">
+
+        <fieldset>
+          <legend>Your details</legend>
+
+          <p class="field">
+            <label for="fullname">Full name *</label>
+            <input type="text" id="fullname" name="fullname" required minlength="3" maxlength="60" placeholder="e.g. Ayesha Khan" autocomplete="name">
+          </p>
+
+          <p class="field">
+            <label for="email">University email *</label>
+            <input type="email" id="email" name="email" required placeholder="you@university.edu.pk" autocomplete="email">
+          </p>
+
+          <p class="field">
+            <label for="phone">Phone number *</label>
+            <input type="tel" id="phone" name="phone" required pattern="03[0-9]{2}-?[0-9]{7}" placeholder="0300-1234567" aria-describedby="phone-hint" autocomplete="tel">
+            <span class="hint" id="phone-hint">Pakistani mobile number, for example 0300-1234567.</span>
+          </p>
+
+          <p class="field">
+            <label for="semester">Current semester</label>
+            <input type="number" id="semester" name="semester" min="1" max="8" placeholder="1 to 8">
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your event</legend>
+
+          <p class="field">
+            <label for="event">Which event will you attend? *</label>
+            <select id="event" name="event" required>
+              <option value="">Choose an event</option>
+              <option value="Voices Unmuted (7 Nov)">Voices Unmuted: Open Mic and Poetry Night (7 Nov)</option>
+              <option value="Code Like a Queen (18 Nov)">Code Like a Queen: Build Your First Web Page (18 Nov)</option>
+              <option value="Boss Lady Talks (28 Nov)">Boss Lady Talks: Careers Panel (28 Nov)</option>
+              <option value="Rang Mela (11 Dec)">Rang Mela: Pop-Art Poster and Mehndi Day (11 Dec)</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <fieldset>
+          <legend>How did you hear about us? *</legend>
+          <section class="choices">
+            <p>
+              <input type="radio" id="src-friend" name="source" value="A friend" required>
+              <label for="src-friend">A friend</label>
+            </p>
+            <p>
+              <input type="radio" id="src-social" name="source" value="Social media">
+              <label for="src-social">Social media</label>
+            </p>
+            <p>
+              <input type="radio" id="src-poster" name="source" value="Campus poster">
+              <label for="src-poster">Campus poster</label>
+            </p>
+            <p>
+              <input type="radio" id="src-class" name="source" value="In class">
+              <label for="src-class">In class</label>
+            </p>
+          </section>
+        </fieldset>
+
+        <button type="submit">Register me</button>
+        <p id="message" role="status" aria-live="polite" hidden></p>
+      </form>
+    </section>
+
+    <section aria-labelledby="saved-title">
+      <h2 id="saved-title">Saved registrations</h2>
+      <p id="emptyNote">No registrations yet. Fill in the form above to add the first one.</p>
+
+      <section class="table-scroll" id="tableWrap" tabindex="0" aria-label="Saved registrations table, scrollable" hidden>
+        <table id="regTable">
+          <caption>Registrations saved on this device</caption>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Event</th>
+              <th scope="col">Heard from</th>
+            </tr>
+          </thead>
+          <tbody id="regBody"></tbody>
+        </table>
+      </section>
+
+      <button type="button" id="clearBtn" class="danger" disabled>Clear all</button>
+    </section>
+
+    <aside aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact the committee</h2>
+      <p>Trouble registering? Email <a href="mailto:bebaak@university.edu.pk">bebaak@university.edu.pk</a> and we will help.</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 BeBaak Women's Empowerment Club</p>
+    <p>Built for CIT331 Web Technologies, Assignment 1.</p>
+  </footer>
+
+  <script src="js/register.js"></script>
+</body>
+</html>
