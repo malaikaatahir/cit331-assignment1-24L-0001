@@ -1,0 +1,649 @@
+/* ==========================================================
+   Nari Noor Club - desi pop art theme
+   Palette taken from the landing video (red paisley wall,
+   saffron skin tones, black ink outlines).
+   ========================================================== */
+
+/* ---------- 1. Design tokens ---------- */
+:root {
+  --ink: #1b0a06;
+  --maroon: #5a1409;
+  --rust: #b3321a;
+  --saffron: #f6b01e;
+  --teal: #0e6b70;
+
+  --bg: #fde7a8;
+  --card: #fffaf0;
+  --text: #1b0a06;
+  --link: #0e6b70;
+  --line: #1b0a06;
+  --shadow: #1b0a06;
+  --dots: rgba(179, 50, 26, 0.22);
+
+  --font-display: "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-body: Georgia, "Times New Roman", serif;
+}
+
+/* Bonus: dark colour scheme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #2a0d08;
+    --card: #3d140c;
+    --text: #ffeccc;
+    --link: #f6b01e;
+    --line: #f6b01e;
+    --shadow: #000000;
+    --dots: rgba(246, 176, 30, 0.14);
+  }
+}
+
+/* ---------- 2. Base: element selectors + box model ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--dots) 2px, transparent 2px);
+  background-size: 16px 16px;
+}
+
+/* grouping selector */
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.75rem;
+}
+
+h1 { font-size: clamp(2.2rem, 7vw, 3.8rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); }
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1rem; max-width: 65ch; }
+
+a { color: var(--link); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 3px; }
+
+/* attribute selector: external links get an arrow */
+a[href^="https"]::after {
+  content: " \2197";
+  font-size: 0.85em;
+}
+
+/* keyboard focus must always be visible */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 4px solid var(--teal);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 7px var(--saffron);
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+/* ---------- 3. Skip link (keyboard users) ---------- */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 20;
+  padding: 0.6rem 1rem;
+  background: var(--saffron);
+  color: var(--ink);
+  font-family: var(--font-display);
+  border: 3px solid var(--ink);
+  border-radius: 0.5rem;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- 4. Header + navigation (Flexbox) ---------- */
+.site-header {
+  position: relative;
+  background: var(--maroon);
+  border-bottom: 5px solid var(--ink);
+}
+
+/* decorative saffron / rust border strip */
+.site-header::after {
+  content: "";
+  display: block;
+  height: 10px;
+  background: repeating-linear-gradient(90deg, var(--saffron) 0 18px, var(--rust) 18px 36px);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
+}
+
+/* child selector */
+nav > a.brand {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--saffron);
+  text-decoration: none;
+  text-shadow: 3px 3px 0 var(--ink);
+}
+
+/* child selector */
+nav > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* descendant selector */
+nav a {
+  display: block;
+  padding: 0.45rem 1rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1rem;
+  color: #fff3da;
+  text-decoration: none;
+  border: 3px solid transparent;
+  border-radius: 2rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* pseudo-class */
+nav a:hover {
+  background: var(--rust);
+  border-color: var(--ink);
+}
+
+/* current page */
+nav a.active {
+  background: var(--saffron);
+  color: var(--ink);
+  border-color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* ---------- 5. Landing video hero ---------- */
+.hero {
+  position: relative;
+}
+
+#hero-video {
+  display: block;
+  width: 100%;
+  height: clamp(18rem, 44vw, 36rem);
+  object-fit: cover;
+  object-position: center;
+  background: var(--maroon);
+  border: 4px solid var(--line);
+  border-radius: 1.25rem;
+  box-shadow: 8px 8px 0 var(--shadow);
+}
+
+.video-controls {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.video-controls button {
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--saffron);
+  border: 3px solid var(--ink);
+  border-radius: 2rem;
+  box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer;
+}
+
+.hero-card {
+  position: relative;
+  width: min(46rem, 92%);
+  margin: -4.5rem auto 0;
+  padding: 1.5rem 1.75rem;
+  background: var(--card);
+  border: 4px solid var(--line);
+  border-radius: 1.25rem;
+  box-shadow: 8px 8px 0 var(--shadow);
+  text-align: center;
+  animation: pop-in 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) 0.4s both;
+}
+
+.hero-card p { margin-left: auto; margin-right: auto; }
+
+/* the single orchestrated entrance */
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(2rem) scale(0.9) rotate(-2deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+.club-name {
+  color: var(--rust);
+  text-shadow: 3px 3px 0 var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  .club-name { color: var(--saffron); text-shadow: 3px 3px 0 #000; }
+}
+
+/* ---------- 6. Page layout ---------- */
+main {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+main > section { margin-bottom: 3rem; }
+
+.page-intro {
+  padding: 1.5rem 0 0;
+}
+
+.page-intro h1 {
+  color: var(--rust);
+  text-shadow: 3px 3px 0 var(--ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  .page-intro h1 { color: var(--saffron); text-shadow: 3px 3px 0 #000; }
+}
+
+/* ---------- 7. Buttons ---------- */
+.btn,
+button {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--saffron);
+  border: 3px solid var(--ink);
+  border-radius: 2rem;
+  box-shadow: 4px 4px 0 var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+.btn:hover,
+button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+  background: #ffc94d;
+}
+
+.btn:active,
+button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.btn.secondary {
+  background: var(--card);
+  color: var(--ink);
+}
+
+button.danger {
+  background: var(--rust);
+  color: #fff;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+/* ---------- 8. Event cards (Flexbox) ---------- */
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.event-card {
+  position: relative;
+  flex: 1 1 18rem;
+  max-width: 34rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 4px solid var(--line);
+  border-radius: 1rem;
+  box-shadow: 7px 7px 0 var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.event-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0 var(--shadow);
+}
+
+/* pseudo-class: alternate coloured top stripe */
+.event-card:nth-child(odd)  { border-top: 14px solid var(--rust); }
+.event-card:nth-child(even) { border-top: 14px solid var(--teal); }
+
+.event-card .btn { align-self: flex-start; margin-top: auto; }
+
+.event-date {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.event-place { margin-bottom: 0.75rem; }
+
+/* starburst date badge on the featured event */
+.burst {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 9rem;
+  width: 9rem;
+  height: 9rem;
+  padding: 1rem;
+  background: var(--saffron);
+  color: var(--ink);
+  font-family: var(--font-display);
+  line-height: 1.05;
+  text-align: center;
+  clip-path: polygon(50.0% 0.0%, 58.7% 12.0%, 71.7% 5.0%, 74.3% 19.5%, 89.1% 18.8%, 85.1% 33.1%, 98.7% 38.9%, 89.0% 50.0%, 98.7% 61.1%, 85.1% 66.9%, 89.1% 81.2%, 74.3% 80.5%, 71.7% 95.0%, 58.7% 88.0%, 50.0% 100.0%, 41.3% 88.0%, 28.3% 95.0%, 25.7% 80.5%, 10.9% 81.2%, 14.9% 66.9%, 1.3% 61.1%, 11.0% 50.0%, 1.3% 38.9%, 14.9% 33.1%, 10.9% 18.8%, 25.7% 19.5%, 28.3% 5.0%, 41.3% 12.0%);
+}
+
+.burst .day { font-size: 2.4rem; }
+.burst .month { font-size: 1rem; }
+
+.featured-card {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: none;
+}
+
+.featured-body { flex: 1 1 18rem; }
+
+/* ---------- 9. About section: figure + text ---------- */
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-text { flex: 1 1 20rem; }
+
+figure {
+  flex: 0 1 20rem;
+  margin: 0;
+  padding: 0.75rem 0.75rem 0.5rem;
+  background: var(--card);
+  border: 4px solid var(--line);
+  border-radius: 1rem;
+  box-shadow: 8px 8px 0 var(--shadow);
+  transform: rotate(-2deg);
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 3px solid var(--ink);
+  border-radius: 0.5rem;
+}
+
+figcaption {
+  padding-top: 0.5rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.pillars {
+  padding-left: 1.25rem;
+}
+
+.pillars li { margin-bottom: 0.5rem; }
+.pillars li::marker { color: var(--rust); }
+
+/* ---------- 10. Aside (contact box) ---------- */
+aside {
+  padding: 1.25rem 1.5rem;
+  background: var(--teal);
+  color: #ffffff;
+  border: 4px solid var(--ink);
+  border-radius: 1rem;
+  box-shadow: 7px 7px 0 var(--ink);
+}
+
+aside a { color: #ffe08a; }
+
+aside h2 { font-size: 1.4rem; }
+
+/* ---------- 11. Registration form ---------- */
+form {
+  padding: 1.5rem;
+  background: var(--card);
+  border: 4px solid var(--line);
+  border-radius: 1rem;
+  box-shadow: 8px 8px 0 var(--shadow);
+}
+
+fieldset {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.25rem;
+  border: 3px dashed var(--rust);
+  border-radius: 0.75rem;
+}
+
+legend {
+  padding: 0 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 1rem;
+  max-width: none;
+}
+
+label { font-weight: bold; margin-bottom: 0.25rem; }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: #ffffff;
+  border: 3px solid var(--ink);
+  border-radius: 0.5rem;
+}
+
+input:user-invalid,
+select:user-invalid {
+  border-color: #b00020;
+  background: #fff0f0;
+}
+
+.hint {
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0.25rem 0 0;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+.choices p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.choices label { margin: 0; font-weight: normal; }
+
+input[type="radio"] {
+  width: 1.3rem;
+  height: 1.3rem;
+  accent-color: var(--rust);
+}
+
+#message {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--teal);
+  color: #fff;
+  font-weight: bold;
+  border: 3px solid var(--ink);
+  border-radius: 0.5rem;
+}
+
+/* ---------- 12. Saved registrations table ---------- */
+.table-scroll {
+  overflow-x: auto;
+  border: 4px solid var(--line);
+  border-radius: 1rem;
+  background: var(--card);
+  box-shadow: 8px 8px 0 var(--shadow);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+caption {
+  padding: 0.75rem;
+  font-family: var(--font-display);
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.65rem 0.9rem;
+  text-align: left;
+  border-top: 2px solid var(--line);
+}
+
+th {
+  background: var(--maroon);
+  color: #fff3da;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  border-top: 0;
+}
+
+tbody tr:nth-child(even) { background: rgba(246, 176, 30, 0.2); }
+
+#clearBtn { margin-top: 1.25rem; }
+
+/* ---------- 13. Footer ---------- */
+footer {
+  padding: 1.5rem 1.25rem;
+  background: var(--maroon);
+  color: #fff3da;
+  text-align: center;
+  border-top: 5px solid var(--ink);
+}
+
+footer p { margin: 0.25rem auto; }
+footer a { color: var(--saffron); }
+
+/* ---------- 14. Responsive ---------- */
+@media (max-width: 40rem) {
+  body { font-size: 1.05rem; }
+
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  nav > ul { justify-content: center; }
+
+  .hero-card {
+    margin-top: -3rem;
+    padding: 1.1rem;
+  }
+
+  .video-controls {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .featured-card { justify-content: center; text-align: center; }
+  .featured-card .btn { align-self: center; }
+
+  figure { transform: none; }
+}
+
+@media (min-width: 60rem) {
+  .event-card { flex-basis: 20rem; }
+}
+
+/* respect users who do not want motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-card { animation: none; }
+
+  .btn,
+  button,
+  .event-card,
+  nav a { transition: none; }
+}
